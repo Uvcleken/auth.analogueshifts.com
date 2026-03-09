@@ -14,18 +14,18 @@ import { useToast } from "@/contexts/toast";
 export default function ForgotPasswordForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState(false);
+  const [emailError] = useState(false);
   const [loading, setLoading] = useState(false);
   const { notifyUser }: any = useToast();
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault();
 
-    let data = JSON.stringify({
+    const data = JSON.stringify({
       email: email,
     });
 
-    let config = {
+    const config = {
       method: "POST",
       url: "/forgot-password",
       headers: {

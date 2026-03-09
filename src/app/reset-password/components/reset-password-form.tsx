@@ -44,10 +44,11 @@ export default function ResetPasswordForm() {
 
       return () => clearInterval(timer);
     }
+    return undefined;
   }, [isCoutDown]);
 
   useEffect(() => {
-    let userEmail = Cookies.get("userEmail");
+    const userEmail = Cookies.get("userEmail");
     if (userEmail) {
       setEmail(userEmail);
     } else {
@@ -59,11 +60,11 @@ export default function ResetPasswordForm() {
   const seconds = timeLeft % 60;
 
   const resendVerificationCode = () => {
-    let data = JSON.stringify({
+    const data = JSON.stringify({
       email: email,
     });
 
-    let config = {
+    const config = {
       method: "POST",
       url: "/forgot-password",
       headers: {
@@ -76,7 +77,7 @@ export default function ResetPasswordForm() {
     setLoading(true);
     axios
       .request(config)
-      .then((response: any) => {
+      .then((_response: any) => {
         setLoading(false);
         setTimeLeft(120);
         setIsCountDown(true);
@@ -94,7 +95,7 @@ export default function ResetPasswordForm() {
   };
 
   const validateOTP = async () => {
-    let config = {
+    const config = {
       url: "/check-otp",
       method: "POST",
       headers: {
@@ -121,7 +122,7 @@ export default function ResetPasswordForm() {
   };
 
   const resetPassword = async () => {
-    let config = {
+    const config = {
       url: "/reset-password",
       method: "POST",
       headers: {

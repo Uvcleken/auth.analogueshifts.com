@@ -60,7 +60,7 @@ export const useAuth = () => {
 
       if (response?.data?.success) {
         notifyUser("success", "Logged In successful");
-        let t = response.data.data.token;
+        const t = response.data.data.token;
         Cookies.set("token", t);
         if (!response.data.data.user?.email_verified_at) {
           await sendOTP({ setLoading, userToken: t });
@@ -114,7 +114,7 @@ export const useAuth = () => {
     try {
       const res = await axios.request(config);
       if (res.data?.success) {
-        let url = res?.data?.data?.auth_url;
+        const url = res?.data?.data?.auth_url;
         if (url) {
           window.location.href = url;
         }
@@ -166,7 +166,7 @@ export const useAuth = () => {
       });
 
       if (response.status === 200) {
-        let t = response.data[0]?.data?.token;
+        const t = response.data[0]?.data?.token;
         Cookies.set("token", t);
         await sendOTP({ setLoading, userToken: t });
         notifyUser("success", "Account created successfully");
