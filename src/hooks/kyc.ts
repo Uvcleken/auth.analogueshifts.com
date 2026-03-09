@@ -16,7 +16,7 @@ export const useKyc = () => {
   }
 
   const updateKyc = async ({ setLoading, data }: UpdateKYCParams) => {
-    let config = {
+    const config = {
       method: "POST",
       url: "/update/kyc",
       headers: {

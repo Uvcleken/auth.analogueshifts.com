@@ -8,7 +8,7 @@ function LoginContent() {
   const router = useRouter();
   const token = Cookies.get('token');
   const searchParams = useSearchParams();
-  const [loading, setLoading] = useState(false);
+  const [_loading, setLoading] = useState(false);
 
   let app;
   if (searchParams.has('app')) {

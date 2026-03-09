@@ -50,6 +50,7 @@ export default function EmailVerificationForm() {
 
       return () => clearInterval(timer);
     }
+    return undefined;
   }, [isCoutDown]);
 
   // The Timer minutes and seconds left
